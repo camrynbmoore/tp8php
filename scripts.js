@@ -1,12 +1,12 @@
 //function to load a file from the URL "fromFile" into the object "whereTo"
-function loadFileInto(recipeName, listName whereTo) {
+function loadFileInto(recipeName, listName, whereTo) {
 
   // creating a new XMLHttpRequest object
   ajax = new XMLHttpRequest();
 
   //to define the fromFile variable with the passed recipe name and list
-  fromFile = "recipes.php?recipeName=" + reciepName + "&recipeList=" + listName;
-  consol.log("From URL: " + fromFile);
+  fromFile = "recipes.php?recipeName=" + recipeName + "&recipeList=" + listName;
+  console.log("From URL: " + fromFile);
   
   // defines the GET/POST method, source, and async value of the AJAX object
   ajax.open("GET", fromFile, true);
@@ -40,9 +40,9 @@ function Recipe(recipeName, contributorName, imageURL) {
     document.querySelector("#contributor").innerHTML= this.contributor;
     document.querySelector("#heroimage").style.backgroundImage = "url("+ this.imageURL + ")";
     
-    loadFileInto(this.recipe, "ingredients", "#ingredients ul");
-    loadFileInto(this.recipe, "equipment", "#equipment ul");
-    loadFileInto(this.recipe, "directions", "#directions ol");
+    loadFileInto(this.recipeName, "ingredients", "#ingredients ul");
+    loadFileInto(this.recipeName, "equipment", "#equipment ul");
+    loadFileInto(this.recipeName, "directions", "#directions ol");
   }
   
 }
